@@ -2,7 +2,6 @@ import java.util.*;
 import java.util.Timer;
 
 public class Main {
-    public static int userInput;
     public static boolean inTime = false;
 
     public static void main(String[] args) {
@@ -23,7 +22,7 @@ public class Main {
             }
             catch(Exception error) {
                 correctInput = false;
-                System.out.println("Uupps, da ist etwas schief gegangen. Versuch mal bitte eine Zahl einzugeben!");
+                System.out.println("Ups, da ist etwas schief gegangen. Versuch mal bitte eine Zahl einzugeben!");
             }
         } while (!correctInput);
 
@@ -52,7 +51,7 @@ public class Main {
     }
 
     private static String getUserInput(int delay) {
-        String userEingabe = "";
+        String userEingabe;
         Scanner scanner = new Scanner(System.in);
         Timer timer = new Timer();
 
