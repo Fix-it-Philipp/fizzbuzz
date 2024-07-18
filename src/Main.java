@@ -2,7 +2,6 @@ import java.util.*;
 import java.util.Timer;
 
 public class Main {
-    public static int userInput;
     public static boolean inTime = false;
 
     public static void main(String[] args) {
@@ -11,7 +10,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String eingabe;
         boolean correctInput;
-        int delay = 3000;
+        int delay = 10000;
 
         // Abfrage bis wohin gezählt werden soll
         do {
@@ -19,11 +18,14 @@ public class Main {
                 System.out.print("Bis wohin möchten Sie zählen? ");
                 eingabe = scanner.nextLine();
                 countTo = Integer.parseInt(eingabe);
+                System.out.print("Wie viel Zeit (in Sekunden) möchten Sie zur Verfügung haben? ");
+                eingabe = scanner.nextLine();
+                delay = Integer.parseInt(eingabe) * 1000;
                 correctInput = true;
             }
             catch(Exception error) {
                 correctInput = false;
-                System.out.println("Uupps, da ist etwas schief gegangen. Versuch mal bitte eine Zahl einzugeben!");
+                System.out.println("Ups, da ist etwas schief gegangen. Versuch mal bitte eine Zahl einzugeben!");
             }
         } while (!correctInput);
 
@@ -52,14 +54,14 @@ public class Main {
     }
 
     private static String getUserInput(int delay) {
-        String userEingabe = "";
+        String userEingabe;
         Scanner scanner = new Scanner(System.in);
         Timer timer = new Timer();
 
         TimerTask kill = new TimerTask() {
             public void run() {
                 if (!inTime) {
-                    System.out.println("Du warst zu langsam!");
+                    System.out.println("\nDu warst zu langsam!");
                     System.exit(0);
                 }
                 else {
